@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const imageSchema = require('./Image')
 
 const { Schema } = mongoose
 
@@ -11,8 +10,8 @@ const platSchema = new Schema({
     type: String
   },
   photo: {
-    type: imageSchema,
-    default: {}
+    type: Schema.Types.ObjectId,
+    ref: 'Image'
   },
   price: {
     type: Number
@@ -20,6 +19,10 @@ const platSchema = new Schema({
   restaurant: {
     type: Schema.Types.ObjectId,
     ref: 'Restaurant'
+  },
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 }, { timestamps: true })
 

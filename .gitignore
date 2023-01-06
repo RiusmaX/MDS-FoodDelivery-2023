@@ -3,5 +3,5 @@ node_modules
 .env*
 *-lock.json
 *.lock
-files/*
-!files/.gitkeep
+files/images/*
+!files/images/.gitkeep

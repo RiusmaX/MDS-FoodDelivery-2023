@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const imageSchema = require('./Image')
 
 const { Schema } = mongoose
 
@@ -23,7 +22,7 @@ const addressSchema = new Schema({
 }, { timestamps: true })
 
 const restaurantSchema = new Schema({
-  title: {
+  name: {
     type: String,
     required: true
   },
@@ -35,13 +34,17 @@ const restaurantSchema = new Schema({
     default: {}
   },
   photo: {
-    type: imageSchema,
-    default: {}
+    type: Schema.Types.ObjectId,
+    ref: 'Image'
   },
   plats: [{
     type: Schema.Types.ObjectId,
     ref: 'Plat'
-  }]
+  }],
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  }
 }, { timestamps: true })
 
 module.exports = mongoose.models.Restaurant || mongoose.model('Restaurant', restaurantSchema)
