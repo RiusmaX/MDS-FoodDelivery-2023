@@ -3,12 +3,12 @@ const Restaurant = require('../data/models/Restaurant')
 const { isObjectEmpty } = require('../tools/objects')
 
 const getPlats = async () => {
-  const plats = await Plat.find()
+  const plats = await Plat.find().populate('photo')
   return plats
 }
 
 const getPlatById = async (id) => {
-  const plat = await Plat.findById(id)
+  const plat = await Plat.findById(id).populate('photo')
   return plat
 }
 
